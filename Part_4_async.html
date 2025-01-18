@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async Example</title>
+</head>
+<body>
+    <h1>Async/Await Example</h1>
+
+    <script>
+        async function fetchData() {
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            return 'Data fetched! Student Name: MOEN ERAK';
+        }
+
+        async function fetchAndProcessData() {
+            try {
+                console.log('Student Name: MOEN ERAK'); // Replace with your full name
+                console.log('Using async/await:');
+
+                const data = await fetchData(); // Type the data variable
+                console.log(data);
+
+                const processedData = 'Processing data....'; // Give a more descriptive variable name
+                console.log(processedData);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        fetchAndProcessData();
+    </script>
+</body>
+</html>

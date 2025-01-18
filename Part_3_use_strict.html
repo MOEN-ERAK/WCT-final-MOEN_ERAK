@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strict Mode Demo</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        try {
+            console.log('Student Name: MEON ERAK');
+
+            try {
+                let x = 10;
+                console.log('Value of x:', x);
+            } catch (innerError) {
+                console.error("Inner try catch:", innerError.message);
+            }
+
+        } catch (error) {
+            console.error("Outer try catch:", error.message); 
+        }
+
+        function demo() {
+            try {
+                let y = 20;
+                console.log('Value of y:', y);
+            } catch (error) {
+                console.error("Demo function error:", error.message);
+            }
+        }
+
+        demo();
+
+        try {
+            try {
+                eval('var z = 50;');
+                console.log('Variable z created inside eval.');
+                console.log('Cannot delete variables declared with var in strict mode.');
+            } catch (innerEvalError) {
+                console.error("Inner eval try catch:", innerEvalError.message);
+            }
+            
+            let obj = { property: 100 };
+            console.log('Before delete:', obj);
+            delete obj.property;
+            console.log('After delete:', obj);
+        } catch (error) {
+            console.error("Outer eval try catch:", error.message);
+        }
+
+        try {
+            let octal = 0o12;
+            console.log("Octal Value:", octal);
+        } catch (octalError) {
+            console.error("Octal Error:", octalError.message);
+        }
+
+        try {
+            function duplicateParams(a, b, c) {
+                console.log(a, b, c);
+            }
+            duplicateParams(1, 2, 3);
+        } catch (duplicateParamsError) {
+            console.error("Duplicate params error:", duplicateParamsError.message);
+        }
+
+        try {
+            let obj = { a: 1 };
+            console.log("Using 'with' statement is not allowed in strict mode.");
+        } catch (withError) {
+            console.error("With error:", withError.message);
+        }
+    </script>
+</body>
+</html>

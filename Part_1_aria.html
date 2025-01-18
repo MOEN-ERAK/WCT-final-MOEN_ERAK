@@ -1,51 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ARIA Attributes Demo with Dialog</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARIA Attributes Demo</title>
 </head>
 <body>
-  <h1>ARIA Attributes Proof</h1>
+    <h1>ARIA Attributes Proof</h1>
 
-  <div id="example" role="alert" aria-live="assertive" aria-label="Important Alert">
-    This is a dynamic alert area.
-  </div>
+    <div id="example" role="alert" aria-live="assertive" aria-label="Important Alert">
+        This is a dynamic alert area.
+    </div>
 
-  <button id="openDialog">Update Name</button>
+    <button id="updateAlert">Trigger Alert</button>
 
-  <dialog id="nameDialog">
-    <form method="dialog">
-      <label for="nameInput">Enter your full name:</label>
-      <input type="text" id="nameInput" name="name" required>
-      <div>
-        <button type="submit">Submit</button>
-        <button type="button" id="cancelDialog">Cancel</button>
-      </div>
-    </form>
-  </dialog>
+    <script>
+        const alertDiv = document.getElementById('example');
+        const button = document.getElementById('updateAlert');
 
-  <script>
-    const alertDiv = document.getElementById('example');
-    const openDialogButton = document.getElementById('openDialog');
-    const nameDialog = document.getElementById('nameDialog');
-    const cancelDialogButton = document.getElementById('cancelDialog');
-    const nameInput = document.getElementById('nameInput');
-
-    openDialogButton.addEventListener('click', () => {
-      nameDialog.showModal();
-    });
-
-    cancelDialogButton.addEventListener('click', () => {
-      nameDialog.close();
-    });
-
-    nameDialog.addEventListener('close', () => {
-      const userName = nameInput.value.trim();
-      if (userName) {
-        alertDiv.textContent = `Update to full name: ${userName}`;
-      }
-    });
-  </script>
+        button.addEventListener('click', () => {
+            alertDiv.textContent = 'Update to full name: MEON ERAK';
+        });
+    </script>
 </body>
 </html>
